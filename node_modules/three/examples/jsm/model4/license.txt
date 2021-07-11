@@ -1,0 +1,11 @@
+Model Information:
+* title:	gallery
+* source:	https://sketchfab.com/3d-models/gallery-6041625d66084a1fb593316c949a2ed3
+* author:	3DTwins (https://sketchfab.com/3dtwins)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "gallery" (https://sketchfab.com/3d-models/gallery-6041625d66084a1fb593316c949a2ed3) by 3DTwins (https://sketchfab.com/3dtwins) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
