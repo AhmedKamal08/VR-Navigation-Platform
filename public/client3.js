@@ -366,67 +366,7 @@ function init() {
 
         }
     );
-    // function loadModel() {
-
-    //     // object.traverse(function (child) {
-    //     //     //      console.log(child);
-    //     //     ///
-    //     //     if (child.isMesh) {
-
-    //     //         child.material.map = texture;
-    //     //         if (child.name.indexOf("Cube") != -1) {
-    //     //             //                     //child.material.visible = false;
-    //     //             //colliders.push(child);
-    //     //         }
-    //     //     }
-    //     // });
-
-    //     object.position.y = .5;
-    //        object.rotation.y = - Math.PI / 2;
-    //        scene.add(object);
-
-    // }
-
-    // const manager = new THREE.LoadingManager(loadModel);
-
-    // manager.onProgress = function (item, loaded, total) {
-
-    //     //  console.log(item, loaded, total);
-
-    // };
-
-    // texture
-
-    // const textureLoader = new THREE.TextureLoader(manager);
-    // const texture = textureLoader.load('./jsm/textures/untitled11.png');
-    // // StBartsTheLess02
-    // // model
-
-    // function onProgress(xhr) {
-
-    //     if (xhr.lengthComputable) {
-
-    //         const percentComplete = xhr.loaded / xhr.total * 100;
-    //         console.log('model ' + Math.round(percentComplete, 2) + '% downloaded');
-
-    //     }
-
-    // }
-
-    function onError() { }
-
-    // const loader = new OBJLoader(manager);
-    // loader.load('./jsm/model/untitled.obj', function (obj) {
-
-    //     object = obj;
-    //     //  console.log(colliders);
-    // }, onProgress, onError);
-
-
-
-    //const textureLoader1 = new THREE.TextureLoader();
-    // const plyMaterial =       new THREE.MeshBasicMaterial({map: textureLoader1.load() }) ;
-
+   
 
 
     var texture1 = new THREE.TextureLoader().load('./jsm/model7/pedret-interior_meshed_tex.png');
@@ -443,12 +383,7 @@ function init() {
 
         function (geometry) {
 
-            // geometry.traverse( function ( child ) {
-            //     if ( child instanceof THREE.Object3D  ) {
-
-            //     }
-            // });
-
+           
             geometry.computeVertexNormals();
             StPedret = new THREE.Mesh(geometry, material1)
             StPedret.rotateX(-Math.PI / 2)
@@ -518,8 +453,7 @@ function setupXR() {
         flyingVR.add(0, controllerGrip, e.data.gamepad);
         tPointsVR.add(0, controllerGrip, e.data.gamepad);
     });
-    //scene.add( controller );
-    // controller1
+    
     controller1 = renderer.xr.getController(1);
 
     controllerGrip1 = renderer.xr.getControllerGrip(1);
@@ -589,9 +523,6 @@ function setupXR() {
             }
 
         }
-
-
-
 
     }
 
