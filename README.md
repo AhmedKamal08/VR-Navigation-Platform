@@ -1,6 +1,6 @@
 # VR-Navigation-Platform
 
-After cloaning the project  you run the app using single command
+After cloning the project  you run the app using single command
 
 
 <pre><code>
