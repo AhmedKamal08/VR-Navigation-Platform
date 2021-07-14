@@ -61,6 +61,8 @@ for (var i = 0; i <= 4; i += 1) {
     blinkSphersN.push(tempSphere);
 }
 let radiusIndex;
+
+//TPoints
 const locations = [
     new THREE.Vector3(6, 0, -5),
     new THREE.Vector3(20, 0, -3),
@@ -68,11 +70,11 @@ const locations = [
     new THREE.Vector3(20, 0, 1),
 
 ];
-
+let teleports = [];
 
 let selected = false;
 
-
+///////////////////////////////////////////
 //colliders for each map
 let colliders;
 let colliders2;
@@ -85,7 +87,6 @@ var model2;
 var model3;
 var model4;
 
-let teleports = [];
 
 var bbox;
 var bboxSize;
@@ -133,15 +134,16 @@ let workingMatrix = new THREE.Matrix4();
 let controller, controllerGrip;
 let controller1, controllerGrip1;
 
- 
+// Teleportaion points
+
 
 init();
 setupXR();
 animate();
 
- 
-function init() {
 
+function init() {
+    
     container = document.createElement('div');
     document.body.appendChild(container);
 
@@ -438,8 +440,7 @@ function setupXR() {
         tPointsVR.add(1, controllerGrip1, e.data.gamepad);
 
     });
-    //scene.add( controller1 );
-    //
+     
     dolly.add(controllerGrip);
     dolly.add(controller);
     dolly.add(controllerGrip1);
@@ -490,7 +491,7 @@ function setupXR() {
 
             function myFunction1(item, index) {
                 item.fadeIn(1);
-                // console.log("ss");
+                
             }
 
         }
@@ -518,7 +519,7 @@ function setupXR() {
 
             function myFunction1(item, index) {
                 item.fadeOut(1);
-                // console.log("ss");
+               
             }
 
         }
@@ -580,7 +581,7 @@ function checkCollision() {
     if (intersects.length > 0) {
 
         const intersect = intersects[0];
-        // console.log(intersect);
+        
         if (intersect.object instanceof TeleportMesh) {
             intersect.object.selected = true;
             selected = true;
@@ -590,17 +591,13 @@ function checkCollision() {
 
 }
 function useTeleportPoint() {
-    //sconsole.log(selected);
+   
     if (!pressed && selected) {
 
         var R = radiusIndex;
         R = 1;
         if (mode == "blur") {
-
-
-            //dist = temp.length();
-
-
+ 
             blinkSphersN[R].visible = true;
             blinkSphersN[R].scale.set(2, 2, 2);
             new TWEEN.Tween(blinkSphersN[R].scale)
@@ -624,8 +621,7 @@ function useTeleportPoint() {
             blinkSpheres[R].material.opacity = 0;
             blinkSpheres[R].material.color.setHex(0x000000)
             blinkSpheres[R].scale.set(2, 2, 2);
-
-            // console.log("ddd22d");
+ 
             new TWEEN.Tween(blinkSpheres[R].material)
                 .to({ opacity: 1 }, 500)
                 .easing(TWEEN.Easing.Quadratic.Out)
@@ -667,29 +663,20 @@ function render() {
     }
 
     if (pressed && methods.TeleportMode && ui.mesh.visible == false) {
-        //console.log("Dd");
+      
         teleportVR.update();
 
     }
     if (pressed && methods.TeleportaionPoints && ui.mesh.visible == false) {
-        //console.log("Dd");
+        
         tPointsVR.setPressed(pressed);
         tPointsVR.update();
     }
-    // if (!pressed && methods.TeleportaionPoints && ui.mesh.visible == false) {
-    //     //console.log("Dd");
-    //    tPointsVR.setPressed(pressed);
-    //  //   tPointsVR.update();
-    // }
+    
 
 
     checkCollision();
-    //useTeleportPoint();
-
-
-
-
-
+    
 
     renderer.render(scene, camera);
 }
@@ -712,10 +699,10 @@ function createUI() {
         ModeBlink: { type: "button", position: { top: 280, left: 90 }, fontSize: 13, width: 70, height: 52, fontColor: "#fff", backgroundColor: "#0022f3", hover: "#3df", onSelect: onBlink },
 
 
-        Radius1: { type: "button", position: { top: 350, left: 60 }, fontSize: 13, width: 90, height: 52, fontColor: "#fff", backgroundColor: "#0022f3", hover: "#3df", onSelect: changeRadius1(0) },
-        Radius2: { type: "button", position: { top: 350, left: 160 }, fontSize: 13, width: 90, height: 52, fontColor: "#fff", backgroundColor: "#0022f3", hover: "#3df", onSelect: changeRadius1(1) },
-        Radius3: { type: "button", position: { top: 350, left: 260 }, fontSize: 13, width: 90, height: 52, fontColor: "#fff", backgroundColor: "#0022f3", hover: "#3df", onSelect: changeRadius1(2) },
-        Radius4: { type: "button", position: { top: 350, left: 360 }, fontSize: 13, width: 90, height: 52, fontColor: "#fff", backgroundColor: "#0022f3", hover: "#3df", onSelect: changeRadius1(3) },
+       // Radius1: { type: "button", position: { top: 350, left: 60 }, fontSize: 13, width: 90, height: 52, fontColor: "#fff", backgroundColor: "#0022f3", hover: "#3df", onSelect: changeRadius1(0) },
+       // Radius2: { type: "button", position: { top: 350, left: 160 }, fontSize: 13, width: 90, height: 52, fontColor: "#fff", backgroundColor: "#0022f3", hover: "#3df", onSelect: changeRadius1(1) },
+     //   Radius3: { type: "button", position: { top: 350, left: 260 }, fontSize: 13, width: 90, height: 52, fontColor: "#fff", backgroundColor: "#0022f3", hover: "#3df", onSelect: changeRadius1(2) },
+      //  Radius4: { type: "button", position: { top: 350, left: 360 }, fontSize: 13, width: 90, height: 52, fontColor: "#fff", backgroundColor: "#0022f3", hover: "#3df", onSelect: changeRadius1(3) },
 
         Teleport: { type: "button", position: { top: 70, right: 180 }, fontSize: 18, width: 150, height: 52, fontColor: "#fff", backgroundColor: "#0022f3", hover: "#3df", onSelect: onTeleport },
         MaxDistanceP: { type: "button", position: { top: 140, right: 260 }, fontSize: 25, width: 70, height: 52, fontColor: "#fff", backgroundColor: "#0022f3", hover: "#3df", onSelect: onMaxDistanceP },
@@ -742,10 +729,10 @@ function createUI() {
         ModeBlur1: "Blur",
         ModeBlink1: "Blink",
         /////////////////
-        Radius1: "Radius1",
-        Radius2: "Radius2",
-        Radius3: "Radius3",
-        Radius4: "Radius4",
+       // Radius1: "Radius1",
+       // Radius2: "Radius2",
+       // Radius3: "Radius3",
+       // Radius4: "Radius4",
         ///////////////////////
         TeleportionPoint: "T-Points",
     }
